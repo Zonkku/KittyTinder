@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>KittyTinder</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Kitty Profiles</h1>
+	<table>
+		<tbody>
+			<tr th:each = "kitty : ${kitties}" >
+				<td th:text="${kitty.name}" ></td>
+				<td th:text="${kitty.age}" ></td>
+			</tr>
+		</tbody>
+	
+	</table>
+	<p th:text="'name: ' + ${kitty.name}"/>
+	<p th:text="'age: ' + ${kitty.age}" />
+	<a href="/addkitty">Add another cat profile</a>
+	
+</body>
+</html>

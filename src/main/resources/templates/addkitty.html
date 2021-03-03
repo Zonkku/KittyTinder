@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>KittyTinder</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+		<form action="#" th:action="@{/addkitty}" th:object="${kitty} "method="post">
+			<p>Name: <input type="text" th:field="*{name}" /></p>
+			<p>Age: <input type="text" th:field="*{age}" /></p>
+			<p><input type="submit" value="Submit" /></p>
+		</form>
+	
+
+</body>
+</html>
