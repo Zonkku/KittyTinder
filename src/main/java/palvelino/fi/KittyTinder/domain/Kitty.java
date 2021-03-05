@@ -16,7 +16,6 @@ public class Kitty {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Size(min=2, max=30)
 	private String name;
 	
 	private String sex, city, intro, addInfo;
@@ -137,9 +136,14 @@ public class Kitty {
 	public void setAgecategory(AgeCategory agecategory) {
 		this.agecategory = agecategory;
 	}
-	
-	
-			
-	
 
+	@Override
+	public String toString() {
+		if (this.agecategory != null)
+			return "Kitty [id=" + id + ", name=" + name + ", sex=" + sex + ", city=" + city + ", intro=" + intro
+				+ ", addInfo=" + addInfo + ", age=" + age + ", agecategory=" + this.getAgecategory() + "]";
+		else
+			return "Kitty [id=" + id + ", name=" + name + ", sex=" + sex + ", city=" + city + ", intro=" + intro
+					+ ", addInfo=" + addInfo + ", age=" + age + "]";
+	}
 }

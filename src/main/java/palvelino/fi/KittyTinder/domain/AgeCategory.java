@@ -1,5 +1,6 @@
 package palvelino.fi.KittyTinder.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,21 +9,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 public class AgeCategory {
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long agecategoryid;
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "agecategory")
 	private List<Kitty> kitties;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
 
 	public AgeCategory() {}
 	
@@ -30,9 +28,13 @@ public class AgeCategory {
 		super();
 		this.name=name;
 	}
-		
-	public void setId(Long id) {
-		this.id = id;
+
+	public Long getAgecategoryid() {
+		return agecategoryid;
+	}
+
+	public void setAgecategoryid(Long agecategoryid) {
+		this.agecategoryid = agecategoryid;
 	}
 
 	public String getName() {
@@ -50,7 +52,10 @@ public class AgeCategory {
 	public void setKitties(List<Kitty> kitties) {
 		this.kitties = kitties;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "AgeCategory [agecategoryid=" + agecategoryid + ", name=" + name + "]";
+	}
+	
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import palvelino.fi.KittyTinder.domain.CategoryRepository;
@@ -38,7 +39,7 @@ public class KittyController {
 		return "kittyprofiles";
 	}
 	
-	@GetMapping("/addkitty")
+	@RequestMapping(value="/addkitty")
 	public String kittyForm(Model model) {
 		model.addAttribute("kitty", new Kitty());
 		model.addAttribute("categories", crepository.findAll());
@@ -47,20 +48,11 @@ public class KittyController {
 	
 	
 	
-	@PostMapping("/addkitty")
-	public String kittySubmit(@Valid Kitty kitty, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			return "addkitty";
-		}
-		
-		model.addAttribute("kitty", kitty);
+	@RequestMapping(value="/addkitty", method=RequestMethod.POST)
+	public String kittySubmit(Kitty kitty) {
+		repository.save(kitty);
 		return "kittylist";
 	}
-	
-	
-	
-	
-	
 	
 	
 }
