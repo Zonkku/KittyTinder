@@ -28,18 +28,13 @@ public class KittyController {
 	@Autowired
 	private CategoryRepository crepository;
 	
-	@GetMapping("/index")
-	public String Hello() {
-		return "index";
-	}
-	
 	@GetMapping("/kittyprofiles")
 	public String showProfiles(Model model) {
 		model.addAttribute("kitties", repository.findAll());
 		return "kittyprofiles";
 	}
 	
-	@RequestMapping(value="/addkitty")
+	@GetMapping("/addkitty")
 	public String kittyForm(Model model) {
 		model.addAttribute("kitty", new Kitty());
 		model.addAttribute("categories", crepository.findAll());
@@ -47,11 +42,10 @@ public class KittyController {
 	}
 	
 	
-	
-	@RequestMapping(value="/addkitty", method=RequestMethod.POST)
+	@PostMapping("/addkitty")
 	public String kittySubmit(Kitty kitty) {
 		repository.save(kitty);
-		return "kittylist";
+		return "redirect:kittyprofiles";
 	}
 	
 	

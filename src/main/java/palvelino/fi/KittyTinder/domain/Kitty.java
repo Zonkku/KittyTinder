@@ -15,20 +15,16 @@ public class Kitty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	private String name;
-	
-	private String sex, city, intro, addInfo;
+	private String name, sex, city, intro, addInfo;
 	private int age;
 	
 	@ManyToOne
 	@JoinColumn(name = "agecategoryid")
 	private AgeCategory agecategory;
 	
-	public Kitty() {};
+	public Kitty() {}
 	
 	public Kitty(String name, int age) {
-		super();
 		this.name=name;
 		this.age=age;
 		}

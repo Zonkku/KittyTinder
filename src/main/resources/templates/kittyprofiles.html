@@ -9,15 +9,11 @@
 	<table>
 		<tbody>
 			<tr th:each = "kitty : ${kitties}" >
-				<td th:text="${kitty.name}" ></td>
-				<td th:text="${kitty.age}" ></td>
+				<td th:text="'Name: ' + ${kitty.name}" ></td>
+				<td th:text="'Age: ' + ${kitty.age}" ></td>
 			</tr>
 		</tbody>
-	
 	</table>
-	<p th:text="'name: ' + ${kitty.name}"/>
-	<p th:text="'age: ' + ${kitty.age}" />
-	<a href="/addkitty">Add another cat profile</a>
-	
+	<a href="/addkitty">Add another cat profile</a>	
 </body>
 </html>
