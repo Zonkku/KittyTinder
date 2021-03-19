@@ -1,5 +1,6 @@
 package palvelino.fi.KittyTinder.domain;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +13,17 @@ import palvelino.fi.KittyTinder.domain.AgeCategory;
 
 @Entity
 public class Kitty {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name, sex, city, intro, addInfo;
+	
+	@Size(min=2, max=30)
+	private String name, sex, city;
+	
+	@Size(max=500)
+	private String intro, addInfo;
+	
 	private int age;
 	
 	@ManyToOne
@@ -24,16 +32,11 @@ public class Kitty {
 	
 	public Kitty() {}
 	
-	public Kitty(String name, int age) {
+	public Kitty(String name, int age, AgeCategory agecategory) {
 		this.name=name;
 		this.age=age;
+		this.agecategory = agecategory;
 		}
-
-	public Kitty(String name, int age, String city) {
-		this.name=name;
-		this.age=age;
-		this.city=city;
-	}
 
 	public Kitty(String name, int age, String city,  String sex) {
 		this.name=name;

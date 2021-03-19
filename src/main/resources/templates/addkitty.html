@@ -7,9 +7,19 @@
 </head>
 <body>
 
-		<form action="#" th:action="@{/addkitty}" th:object="${kitty}" method="post">
+		<form action="#" th:action="@{/save}" th:object="${kitty}" method="post">
 			<p>Name: <input type="text" th:field="*{name}" /></p>
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
+
 			<p>Age: <input type="text" th:field="*{age}" /></p>
+			<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</p>
+
+			<p>Age Category: </p>
+
+			<select id="categlist" th:field="*{agecategory}" class="form-control">
+       			<option th:each="agecategory: ${agecategories}" th:value="${agecategory.agecategoryid}" th:text="${agecategory.name}"></option>
+    		</select>
+			
 			<p><input type="submit" value="Submit" /></p>
 		</form>
 	

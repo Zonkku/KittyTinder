@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<title>KittyTinder</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+	
+	<div>
 	<h1>Kitty Profiles</h1>
-	<table>
-		<tbody>
-			<tr th:each = "kitty : ${kitties}" >
-				<td th:text="'Name: ' + ${kitty.name}" ></td>
-				<td th:text="'Age: ' + ${kitty.age}" ></td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/addkitty">Add another cat profile</a>	
+	</div>
+	
+	<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	
+	<table class="table table-striped">
+		<tr>
+		    <th>Name</th>
+		    <th>Age</th>
+		    <th>Age category</th>
+		    <th sec:authorize="hasRole('ADMIN')"> </th>
+		</tr>  
+    	<tr th:each = "kitty : ${kitties}">
+    		<td th:text="${kitty.name}"></td>
+    		<td th:text="${kitty.age}"></td>
+    		<td th:text="${kitty.agecategory.name}"></td> 		
+ 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${kitty.id})}" class="btn btn-xs btn-danger">Delete</a></td>
+ 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/edit/{id}(id=${kitty.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		
+    	</tr>
+     </table>
+	
+	
+		<a href="/addkitty">Add another cat profile</a>	
 </body>
 </html>
