@@ -28,7 +28,7 @@ package palvelino.fi.KittyTinder;
 	        http
 	        .authorizeRequests().antMatchers("**/css/**").permitAll() // Enables css when logged out
 	        .and()
-	        .authorizeRequests().anyRequest().permitAll()
+	        .authorizeRequests().anyRequest().authenticated()
 	        .and()
 	        
 	      .formLogin()

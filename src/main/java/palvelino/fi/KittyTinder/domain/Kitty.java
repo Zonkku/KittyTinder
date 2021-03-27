@@ -20,7 +20,7 @@ public class Kitty {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	
+	@Size(max=1000)
 	private String name, sex, city, photoLocation;
 	
 	@Size(max=1000)

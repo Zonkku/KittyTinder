@@ -41,14 +41,14 @@ public class KittyTinderApplication {
 			crepository.save(seniori);
 			crepository.save(vanhus);
 			
-			Kitty kisu1 = new Kitty("Tervehdys! Minun nimeni on Ingrid. Olen kuulemma uljasta viikinkineitojen sukua, ja hyvin ylpeä sielu.", "Ingrid", 3, nuoriAikuinen, "C:/upload/Ingrid1.jpg");
+			Kitty kisu1 = new Kitty("Tervehdys! Minun nimeni on Ingrid. Olen kuulemma uljasta viikinkineitojen sukua, ja hyvin ylpeä sielu.", "Ingrid", 3, nuoriAikuinen, "/images/Ingrid1.jpg");
 			
 			
-			Kitty kisu2 = new Kitty("Hei, olen Jalmari, hurmaavaksi ja persoonalliseksi kehuttu. Minulla on töpöhäntä ja rakastan lattialämmitystä ", "Jalmari", 13, seniori, "C:/upload/Jalmari1.jpg");
+			Kitty kisu2 = new Kitty("Hei, olen Jalmari, hurmaavaksi ja persoonalliseksi kehuttu. Minulla on töpöhäntä ja rakastan lattialämmitystä ", "Jalmari", 13, seniori, "/images/Jalmari1.jpg");
 			
 			
 			
-			Kitty kisu3 = new Kitty("Xeni tässä, hei! Lämpenen hitaasti uusille ystäville, mutta kun lämpenen, tykkään silittelyistä ja rapsutteluista", "Xeni", 7, keskiIkainen, "C:/upload/Xeni1.jpg");
+			Kitty kisu3 = new Kitty("Xeni tässä, hei! Lämpenen hitaasti uusille ystäville, mutta kun lämpenen, tykkään silittelyistä ja rapsutteluista", "Xeni", 7, keskiIkainen, "/images/Xeni1.jpg");
 			
 			repository.save(kisu1);
 			repository.save(kisu2);
