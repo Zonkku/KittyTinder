@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import palvelino.fi.KittyTinder.domain.AgeCategory;
+import palvelino.fi.KittyTinder.domain.FileModel;
+
 
 @Entity
 public class Kitty {
@@ -18,10 +20,10 @@ public class Kitty {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Size(min=2, max=30)
-	private String name, sex, city;
 	
-	@Size(max=500)
+	private String name, sex, city, photoLocation;
+	
+	@Size(max=1000)
 	private String intro, addInfo;
 	
 	private int age;
@@ -30,13 +32,42 @@ public class Kitty {
 	@JoinColumn(name = "agecategoryid")
 	private AgeCategory agecategory;
 	
-	public Kitty() {}
+	@ManyToOne
+	@JoinColumn(name = "filemodel")
+	private FileModel filemodel;
 	
-	public Kitty(String name, int age, AgeCategory agecategory) {
+	
+	public Kitty() {}
+
+	public Kitty(String name, int age) {
 		this.name=name;
 		this.age=age;
-		this.agecategory = agecategory;
 		}
+
+	public Kitty(String intro, String name, int age, AgeCategory agecategory, String photoLocation) {
+		this.intro=intro;
+		this.name=name;
+		this.age=age;
+		this.agecategory=agecategory;
+		this.photoLocation=photoLocation;
+		}
+
+	
+	public Kitty(String name, int age, AgeCategory agecategory, String photoLocation) {
+		this.name=name;
+		this.age=age;
+		this.agecategory=agecategory;
+		this.photoLocation = photoLocation;
+
+		}
+
+	
+	public Kitty(String name, int age, String photoLocation) {
+		this.name=name;
+		this.age=age;
+		this.photoLocation = photoLocation;
+		}
+
 
 	public Kitty(String name, int age, String city,  String sex) {
 		this.name=name;
@@ -47,6 +78,14 @@ public class Kitty {
 	}
 	
 	
+	public String getPhotoLocation() {
+		return photoLocation;
+	}
+
+	public void setPhotoLocation(String photoLocation) {
+		this.photoLocation = photoLocation;
+	}
+
 	public Kitty(String name, String city, int age, String intro) {
 		this.name=name;
 		this.city=city;
@@ -138,11 +177,18 @@ public class Kitty {
 
 	@Override
 	public String toString() {
+		
 		if (this.agecategory != null)
 			return "Kitty [id=" + id + ", name=" + name + ", sex=" + sex + ", city=" + city + ", intro=" + intro
-				+ ", addInfo=" + addInfo + ", age=" + age + ", agecategory=" + this.getAgecategory() + "]";
-		else
+					+ ", addInfo=" + addInfo + ", photoLocation=" + photoLocation + ", age=" + age + ", agecategory=" + this.getAgecategory()
+					+ "]";
+		
+		else		
 			return "Kitty [id=" + id + ", name=" + name + ", sex=" + sex + ", city=" + city + ", intro=" + intro
-					+ ", addInfo=" + addInfo + ", age=" + age + "]";
+				+ ", addInfo=" + addInfo + ", photoLocation=" + photoLocation + ", age=" + age + "]";
 	}
+
+	
+	
+	
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>KittyTinder</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	
+</head>
+<body>
+	<div>
+		<a th:href="@{/addkitty}" class="btn btn-xs btn-success">Back</a>
+	</div>
+	<h1>Add photo</h1>
+	<form enctype="multipart/form-data" action="/upload" method="post">
+		<input type="file" name="file" /><br/>
+		<br></br>
+		<input type="submit" value="Submit" class="btn btn-s btn-success" />
+	</form>
+</body>
+</html>

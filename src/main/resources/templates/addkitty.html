@@ -4,25 +4,37 @@
 <head>
 	<title>KittyTinder</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 
-		<form action="#" th:action="@{/save}" th:object="${kitty}" method="post">
-			<p>Name: <input type="text" th:field="*{name}" /></p>
-			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
-
-			<p>Age: <input type="text" th:field="*{age}" /></p>
-			<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</p>
-
-			<p>Age Category: </p>
-
-			<select id="categlist" th:field="*{agecategory}" class="form-control">
-       			<option th:each="agecategory: ${agecategories}" th:value="${agecategory.agecategoryid}" th:text="${agecategory.name}"></option>
-    		</select>
-			
-			<p><input type="submit" value="Submit" /></p>
-		</form>
+	<h1>Add kitty</h1>
+	<br></br>
+	<div>
+		<div class="col-md-4">
+			<form action="#" th:action="@{/save}" th:object="${kitty}" method="post">
+				<p>Name: <input type="text" th:field="*{name}" /></p>
+				<div style="clear: both; display: block; height: 10px;"></div>
+				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</p>
 	
-
+				<p>Age: <input type="text" th:field="*{age}" /></p>
+				<div style="clear: both; display: block; height: 10px;"></div>
+				<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</p>
+				
+				<p>Introduction: <input type="text" th:field="*{intro}" /></p>
+				<div style="clear: both; display: block; height: 10px;"></div>
+				
+				<p>Age Category: </p>
+				<select id="categlist" th:field="*{agecategory}" >
+	       			<option th:each="agecategory: ${agecategories}" th:value="${agecategory.agecategoryid}" th:text="${agecategory.name}"></option>
+	    		</select>
+				<br></br>
+				<a th:href="@{/addphoto/{id}(id=${kitty.id})}" class="btn btn-xs btn-success">Add profile picture</a>
+				<br></br>
+				<p><input type="submit" value="Submit" class="btn btn-s btn-success" /></p>
+				<div style="clear: both; display: block; height: 10px;"></div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
